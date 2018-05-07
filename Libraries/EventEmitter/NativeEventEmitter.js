@@ -31,12 +31,12 @@ class NativeEventEmitter extends EventEmitter {
   constructor(nativeModule: ?NativeModule) {
     super(RCTDeviceEventEmitter.sharedSubscriber);
 
-    console.log("INFO NativEventEmitter :: constructor, ever??")
+    //console.log("INFO NativEventEmitter :: constructor, ever??")
     if (Platform.OS === 'ios') {
       invariant(nativeModule, 'Native module cannot be null.');
       this._nativeModule = nativeModule;
     } else if (Platform.OS === 'android') {
-      console.log("INFO NativEventEmitter :: constructor, android")
+      //console.log("INFO NativEventEmitter :: constructor, android")
     }
   }
 

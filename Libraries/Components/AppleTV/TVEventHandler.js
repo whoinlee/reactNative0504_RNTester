@@ -22,6 +22,8 @@ TVEventHandler.prototype.enable = function(component: ?any, callback: Function) 
     return;
   }
 
+  //console.log("INFO TVEventHandler :: Platform.OS ?? " + Platform.OS) //called!!
+
   this.__nativeTVNavigationEventEmitter = new NativeEventEmitter(TVNavigationEventEmitter);
   this.__nativeTVNavigationEventListener = this.__nativeTVNavigationEventEmitter.addListener(
     'onHWKeyEvent',

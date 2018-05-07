@@ -17,7 +17,7 @@ const RNTesterPage = require('./RNTesterPage');
 class RNTesterExampleContainer extends React.Component {
   renderExample(example, i) {
     
-    console.log("INFO RNTesterExampleContainer, renderExample")
+    console.log("INFO RNTesterExampleContainer :: renderExample")
 
     // Filter platform-specific examples
     var {title, description, platform} = example;

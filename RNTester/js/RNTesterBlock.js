@@ -59,7 +59,8 @@ var styles = StyleSheet.create({
   container: {
     borderRadius: 3,
     borderWidth: 0.5,
-    borderColor: '#d6d7da',
+    // borderColor: '#d6d7da',  //test by WhoIN
+    borderColor: '#ff0000',
     backgroundColor: '#ffffff',
     margin: 10,
     marginVertical: 5,

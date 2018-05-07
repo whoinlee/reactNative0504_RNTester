@@ -93,25 +93,25 @@ class EventCheckBoxExample extends React.Component<{}, $FlowFixMeState> {
 
 let examples = [
   {
-    title: 'CheckBoxes can be set to true or false',
+    title: 'CheckBoxes can be set to true or false, updated by WhoIN',
     render(): React.Element<any> {
       return <BasicCheckBoxExample />;
     },
   },
   {
-    title: 'CheckBoxes can be disabled',
+    title: 'CheckBoxes can be disabled, updated by WhoIN',
     render(): React.Element<any> {
       return <DisabledCheckBoxExample />;
     },
   },
   {
-    title: 'Change events can be detected',
+    title: 'Change events can be detected, updated by WhoIN',
     render(): React.Element<any> {
       return <EventCheckBoxExample />;
     },
   },
   {
-    title: 'CheckBoxes are controlled components',
+    title: 'CheckBoxes are controlled components, updated by WhoIN',
     render(): React.Element<any> {
       return <CheckBox />;
     },

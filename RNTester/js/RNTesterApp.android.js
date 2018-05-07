@@ -55,13 +55,12 @@ const HEADER_NAV_ICON = nativeImageSource({
 
 class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
   UNSAFE_componentWillMount() {
-    console.log("INFO RNTesterApp, UNSAFE_componentWillMount")
+    console.log("INFO RNTesterApp, UNSAFE_componentWillMount, 0507, 16:30 pm")
     BackHandler.addEventListener('hardwareBackPress', this._handleBackButtonPress);
   }
 
   componentDidMount() {
-    console.log("INFO RNTesterApp, componentDidMount")
-
+    //console.log("INFO RNTesterApp, componentDidMount")
     Linking.getInitialURL().then((url) => {
       AsyncStorage.getItem(APP_STATE_KEY, (err, storedString) => {
         const exampleAction = URIActionMap(this.props.exampleFromAppetizeParams);
@@ -83,7 +82,7 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
   }
 
   render() {
-    console.log("INFO RNTesterApp, render")
+    //console.log("INFO RNTesterApp :: render, drawerBackgroundColor added, not working")
     if (!this.state) {
       return null;
     }
@@ -93,14 +92,17 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
         drawerWidth={Dimensions.get('window').width - DRAWER_WIDTH_LEFT}
         keyboardDismissMode="on-drag"
         onDrawerOpen={() => {
+          console.log("INFO RNTesterApp :: render, onDrawerOpen")
           this._overrideBackPressForDrawerLayout = true;
         }}
         onDrawerClose={() => {
+          console.log("INFO RNTesterApp :: render, onDrawerClose")
           this._overrideBackPressForDrawerLayout = false;
         }}
         ref={(drawer) => { this.drawer = drawer; }}
         renderNavigationView={this._renderDrawerContent}
-        statusBarBackgroundColor="#589c90">
+        statusBarBackgroundColor="#589c90"
+        drawerBackgroundColor="#ffcc00">
         {this._renderApp()}
       </DrawerLayoutAndroid>
     );
@@ -123,6 +125,9 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
     const {
       openExample,
     } = this.state;
+
+    console.log("INFO RNTesterApp :: _renderApp, openExample ? " + openExample)
+    //console.log("INFO RNTesterApp :: _renderApp, this.state.openExample ? " + this.state.openExample)
 
     if (openExample) {
       const ExampleModule = RNTesterList.Modules[openExample];
@@ -172,7 +177,7 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
   }
 
   _handleAction = (action: Object): boolean => {
-    console.log("INFO RNTesterApp, _handleAction, action.type? " + action.type)
+    console.log("INFO RNTesterApp :: _handleAction, action.type ? " + action.type)
     
     this.drawer && this.drawer.closeDrawer();
     const newState = RNTesterNavigationReducer(this.state, action);
@@ -187,9 +192,10 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
   };
 
   _handleBackButtonPress = () => {
-    console.log("INFO RNTesterApp, _handleBackButtonPress ========> ever ?????")
+    console.log("INFO RNTesterApp :: _handleBackButtonPress, this._overrideBackPressForDrawerLayout ? " + this._overrideBackPressForDrawerLayout)
 
     if (this._overrideBackPressForDrawerLayout) {
+      console.log("INFO RNTesterApp :: _handleBackButtonPress, case 1")
       // This hack is necessary because drawer layout provides an imperative API
       // with open and close methods. This code would be cleaner if the drawer
       // layout provided an `isOpen` prop and allowed us to pass a `onDrawerClose` handler.
@@ -201,8 +207,11 @@ class RNTesterApp extends React.Component<Props, RNTesterNavigationState> {
       this._exampleRef.handleBackAction &&
       this._exampleRef.handleBackAction()
     ) {
+      console.log("INFO RNTesterApp :: _handleBackButtonPress, case 2")
       return true;
     }
+
+    console.log("INFO RNTesterApp :: _handleBackButtonPress, case 3")
     return this._handleAction(RNTesterActions.Back());
   };
 }

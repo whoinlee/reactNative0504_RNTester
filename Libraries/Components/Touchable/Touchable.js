@@ -318,10 +318,14 @@ const TouchableMixin = {
       return;
     }
 
+   // console.log("INFO Touchable :: Touchable, Platform.isTV ? " + Platform.isTV)
+
     this._tvEventHandler = new TVEventHandler();
     this._tvEventHandler.enable(this, function(cmp, evt) {
       const myTag = ReactNative.findNodeHandle(cmp);
       evt.dispatchConfig = {};
+      //console.log("INFO Touchable :: this._tvEventHandler.enable, cmp.constructor.name ? " +  cmp.constructor.name)
+      //console.log("INFO Touchable :: this._tvEventHandler.enable, evt.eventType ? " + evt.eventType)
       if (myTag === evt.tag) {
         if (evt.eventType === 'focus') {
           cmp.touchableHandleActivePressIn && cmp.touchableHandleActivePressIn(evt);

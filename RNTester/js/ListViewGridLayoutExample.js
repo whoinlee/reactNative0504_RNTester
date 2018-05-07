@@ -98,6 +98,7 @@ var ListViewGridLayoutExample = createReactClass({
   },
 
   _pressRow: function(rowID: number) {
+    console.log("INFO ListViewGridLayoutExample :: _pressRow, rowID ? " + rowID)
     this._pressData[rowID] = !this._pressData[rowID];
     this.setState({dataSource: this.state.dataSource.cloneWithRows(
       this._genRows(this._pressData)
