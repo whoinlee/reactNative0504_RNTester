@@ -325,8 +325,11 @@ const TouchableMixin = {
       const myTag = ReactNative.findNodeHandle(cmp);
       evt.dispatchConfig = {};
       //console.log("INFO Touchable :: this._tvEventHandler.enable, cmp.constructor.name ? " +  cmp.constructor.name)
-      //console.log("INFO Touchable :: this._tvEventHandler.enable, evt.eventType ? " + evt.eventType)
+      
+      //console.log("INFO Touchable :: this._tvEventHandler.enable, evt.tag ? " + evt.tag)
       if (myTag === evt.tag) {
+        console.log("INFO Touchable :: this._tvEventHandler.enable, (myTag === evt.tag) and evt.eventType ? " + evt.eventType + ", evt.tag ? " + evt.tag)
+        //console.log("INFO Touchable :: this._tvEventHandler.enable, (myTag === evt.tag) and cmp.constructor.name? " + cmp.constructor.name)
         if (evt.eventType === 'focus') {
           cmp.touchableHandleActivePressIn && cmp.touchableHandleActivePressIn(evt);
         } else if (evt.eventType === 'blur') {

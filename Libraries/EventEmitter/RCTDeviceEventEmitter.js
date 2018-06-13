@@ -43,6 +43,7 @@ class RCTDeviceEventEmitter extends EventEmitter {
 
 
   addListener(eventType: string, listener: Function, context: ?Object): EmitterSubscription {
+    // console.log("INFO RCTDeviceEventEmitter :: eventType ? " + eventType)
     if (__DEV__) {
       checkNativeEventModule(eventType);
     }

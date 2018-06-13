@@ -35,9 +35,10 @@ class NativeEventEmitter extends EventEmitter {
     if (Platform.OS === 'ios') {
       invariant(nativeModule, 'Native module cannot be null.');
       this._nativeModule = nativeModule;
-    } else if (Platform.OS === 'android') {
+    } 
+    //else if (Platform.OS === 'android') {
       //console.log("INFO NativEventEmitter :: constructor, android")
-    }
+    //}
   }
 
   addListener(
@@ -45,6 +46,9 @@ class NativeEventEmitter extends EventEmitter {
     listener: Function,
     context: ?Object,
   ): EmitterSubscription {
+
+    //if (eventType == 'onHWKeyEvent') console.log("INFO NativeEventEmitter :: addListener, eventType is ? " + eventType)
+    
     if (this._nativeModule != null) {
       this._nativeModule.addListener(eventType);
     }

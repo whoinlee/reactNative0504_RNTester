@@ -190,6 +190,7 @@ class FlatListExample extends React.PureComponent<{}, $FlowFixMeState> {
       }>
     }
   ) => {
+    console.log("INFO FlatListExample :: _onViewableItemsChanged")
     // Impressions can be logged here
     if (this.state.logViewable) {
       infoLog(
